@@ -5,8 +5,9 @@ function _init()
 
 
   stars1={}
-  stars2={}
+  enemies={}
   
+    
   ship = {}
   ship.x = 128 / 2
   ship.y = 128 - 16
@@ -29,7 +30,7 @@ function _update60()
      ship.x = min(ship.x + 1, 128)
    end
    
- 
+    ennemies()
    ★()
 end
 
@@ -43,6 +44,27 @@ function update★(array)
     
    end
   
+end
+
+function ennemies()
+
+
+   for 🐱 in all(ennemies) do
+      🐱.t += 0.2
+      🐱.x = 🐱.offset + sin(t)
+      🐱.y = 🐱.y + 0.5
+      if 🐱.y > 128 then
+        del(ennmies, 🐱)
+      end
+   end
+   if rnd() > 0.8 then
+     local 🐱 = {}
+     🐱.x = 0
+     🐱.y = 0
+     🐱.offset = 8
+     add(ennemies, 🐱)
+   
+   end
 end
 
 function ★()
@@ -85,6 +107,9 @@ function _draw()
   end  
   spr(offset + ship.index, ship.x, ship.y, 1, 1, is_flip)
 
+  for 🐱 in all(ennemies) do
+    line(🐱.x, 🐱.y, 🐱.x + 5, 🐱.y, 6)
+  end
  
 end
 
